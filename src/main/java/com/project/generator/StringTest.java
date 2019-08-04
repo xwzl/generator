@@ -9,7 +9,7 @@ import java.io.IOException;
 public class StringTest {
 
     public static void main(String[] args) throws IOException {
-        String uri = "D:\\tcjk\\generator/src/main/java\\dftc\\spring\\generator\\dfasf\\vos";
+        String uri = "D:\\tcjk\\generator/src/main/java\\dftc\\spring\\generator\\dfasf\\Vos";
         System.out.println(uri.substring(uri.lastIndexOf("\\")));
 
         String prefix_model = "D:\\tcjk\\generator\\commom/common-model/src/main/java";
@@ -22,7 +22,7 @@ public class StringTest {
         if (uri.endsWith(ProjectPath.DO_SUFFIX) || uri.endsWith(ProjectPath.DTO_SUFFIX)) {
             path = prefix_model + append_model + uri.substring(uri.lastIndexOf("\\"));
         } else {
-            path = prefix_customer+uri.substring(uri.indexOf("/src/main/java"));
+            path = prefix_customer+uri.substring(uri.indexOf("/src/main/java")+14);
         }
         System.out.println(path);
 

@@ -2,6 +2,8 @@ package ${package.VO};
 
 import lombok.Data;
 import lombok.experimental.Accessors;
+import io.swagger.annotations.ApiModel
+import io.swagger.annotations.ApiModelProperty
 
 import java.io.Serializable;
 
@@ -13,6 +15,7 @@ import java.io.Serializable;
  */
 @Data
 @Accessors(chain = true)
+@ApiModel(value="${entity}对象", description="${table.comment!''}")
 public class ${table.voName} implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -22,6 +25,7 @@ public class ${table.voName} implements Serializable {
     /**
     * ${field.comment}
     */
+    @ApiModelProperty(value = "${field.comment}")
 </#if>
     private ${field.propertyType} ${field.propertyName};
 </#list>

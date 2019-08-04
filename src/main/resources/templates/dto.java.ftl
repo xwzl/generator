@@ -1,4 +1,4 @@
-package ${package.DTO};
+package ${commonPackage.DTO};
 
 import lombok.Data;
 import lombok.experimental.Accessors;

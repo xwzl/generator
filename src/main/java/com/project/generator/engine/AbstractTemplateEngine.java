@@ -20,6 +20,7 @@ import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.toolkit.PackageHelper;
 import com.project.generator.InjectionConfig;
+import com.project.generator.ProjectPath;
 import com.project.generator.config.ConstVal;
 import com.project.generator.config.FileOutConfig;
 import com.project.generator.config.GlobalConfig;
@@ -37,6 +38,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.project.generator.plus.PackageConfig.*;
 
 
 /**
@@ -89,6 +92,8 @@ public abstract class AbstractTemplateEngine {
                 }
                 // Mp.java
                 String entityName = tableInfo.getEntityName();
+                final String commonPath = PROJECT_NAME + COMMON_PROJECT_PATH + JAVA_SOURCE_PATH + COMMON_JAVA_PATH + MICROSOFT_SERVICE_NAME;
+                final String currentModelPath = PROJECT_NAME + CURRENT_MODEL_PROJECT_PATH + JAVA_SOURCE_PATH;
                 //if (null != entityName && null != pathInfo.get(ConstVal.ENTITY_PATH)) {
                 //    String entityFile = String.format((pathInfo.get(ConstVal.ENTITY_PATH) + File.separator + "%s" + suffixJavaOrKt()), entityName);
                 //    if (isCreate(FileType.ENTITY, entityFile)) {
@@ -98,6 +103,7 @@ public abstract class AbstractTemplateEngine {
                 // MpMapper.java
                 if (null != tableInfo.getMapperName() && null != pathInfo.get(ConstVal.MAPPER_PATH)) {
                     String mapperFile = String.format((pathInfo.get(ConstVal.MAPPER_PATH) + File.separator + tableInfo.getMapperName() + suffixJavaOrKt()), entityName);
+                    mapperFile = currentModelPath + mapperFile.substring(mapperFile.indexOf("/src/main/java") + 14);
                     if (isCreate(FileType.MAPPER, mapperFile)) {
                         writer(objectMap, templateFilePath(template.getMapper()), mapperFile);
                     }
@@ -112,6 +118,7 @@ public abstract class AbstractTemplateEngine {
                 // IMpService.java
                 if (null != tableInfo.getServiceName() && null != pathInfo.get(ConstVal.SERVICE_PATH)) {
                     String serviceFile = String.format((pathInfo.get(ConstVal.SERVICE_PATH) + File.separator + tableInfo.getServiceName() + suffixJavaOrKt()), entityName);
+                    serviceFile = currentModelPath + serviceFile.substring(serviceFile.indexOf("/src/main/java") + 14);
                     if (isCreate(FileType.SERVICE, serviceFile)) {
                         writer(objectMap, templateFilePath(template.getService()), serviceFile);
                     }
@@ -119,6 +126,7 @@ public abstract class AbstractTemplateEngine {
                 // MpServiceImpl.java
                 if (null != tableInfo.getServiceImplName() && null != pathInfo.get(ConstVal.SERVICE_IMPL_PATH)) {
                     String implFile = String.format((pathInfo.get(ConstVal.SERVICE_IMPL_PATH) + File.separator + tableInfo.getServiceImplName() + suffixJavaOrKt()), entityName);
+                    implFile = currentModelPath + implFile.substring(implFile.indexOf("/src/main/java") + 14);
                     if (isCreate(FileType.SERVICE_IMPL, implFile)) {
                         writer(objectMap, templateFilePath(template.getServiceImpl()), implFile);
                     }
@@ -126,6 +134,7 @@ public abstract class AbstractTemplateEngine {
                 // MpController.java
                 if (null != tableInfo.getControllerName() && null != pathInfo.get(ConstVal.CONTROLLER_PATH)) {
                     String controllerFile = String.format((pathInfo.get(ConstVal.CONTROLLER_PATH) + File.separator + tableInfo.getControllerName() + suffixJavaOrKt()), entityName);
+                    controllerFile = currentModelPath + controllerFile.substring(controllerFile.indexOf("/src/main/java") + 14);
                     if (isCreate(FileType.CONTROLLER, controllerFile)) {
                         writer(objectMap, templateFilePath(template.getController()), controllerFile);
                     }
@@ -133,6 +142,7 @@ public abstract class AbstractTemplateEngine {
                 // MpVO.java
                 if (null != tableInfo.getVoName() && null != pathInfo.get(ConstVal.VO_PATH)) {
                     String voFile = String.format((pathInfo.get(ConstVal.VO_PATH) + File.separator + tableInfo.getVoName() + suffixJavaOrKt()), entityName);
+                    voFile = currentModelPath + voFile.substring(voFile.indexOf("/src/main/java") + 14);
                     if (isCreate(FileType.VO, voFile)) {
                         writer(objectMap, templateFilePath(template.getVos()), voFile);
                     }
@@ -140,6 +150,7 @@ public abstract class AbstractTemplateEngine {
                 // MpDTO.java
                 if (null != tableInfo.getDtoName() && null != pathInfo.get(ConstVal.DTO_PATH)) {
                     String dtoFile = String.format((pathInfo.get(ConstVal.DTO_PATH) + File.separator + tableInfo.getDtoName() + suffixJavaOrKt()), entityName);
+                    dtoFile = commonPath + "/dtos" + dtoFile.substring(dtoFile.lastIndexOf("\\"));
                     if (isCreate(FileType.DTO, dtoFile)) {
                         writer(objectMap, templateFilePath(template.getDtos()), dtoFile);
                     }
@@ -147,6 +158,7 @@ public abstract class AbstractTemplateEngine {
                 // MpDO.java
                 if (null != tableInfo.getDoName() && null != pathInfo.get(ConstVal.DO_PATH)) {
                     String dosFile = String.format((pathInfo.get(ConstVal.DO_PATH) + File.separator + tableInfo.getDoName() + suffixJavaOrKt()), entityName);
+                    dosFile = commonPath + "/dos" + dosFile.substring(dosFile.lastIndexOf("\\"));
                     if (isCreate(FileType.DOS, dosFile)) {
                         writer(objectMap, templateFilePath(template.getDos()), dosFile);
                     }
@@ -155,6 +167,7 @@ public abstract class AbstractTemplateEngine {
                 // MpDAO.java
                 if (null != tableInfo.getDaoName() && null != pathInfo.get(ConstVal.DAO_PATH)) {
                     String daoFile = String.format((pathInfo.get(ConstVal.DAO_PATH) + File.separator + tableInfo.getDaoName() + suffixJavaOrKt()), entityName);
+                    daoFile = currentModelPath + daoFile.substring(daoFile.indexOf("/src/main/java") + 14);
                     if (isCreate(FileType.DAO, daoFile)) {
                         writer(objectMap, templateFilePath(template.getDao()), daoFile);
                     }
@@ -180,10 +193,19 @@ public abstract class AbstractTemplateEngine {
      * 处理输出目录
      */
     public AbstractTemplateEngine mkdirs() {
+
+        final String commonPath = PROJECT_NAME + COMMON_PROJECT_PATH + JAVA_SOURCE_PATH + COMMON_JAVA_PATH + MICROSOFT_SERVICE_NAME;
+        final String currentModelPath = PROJECT_NAME + CURRENT_MODEL_PROJECT_PATH + JAVA_SOURCE_PATH;
+
         getConfigBuilder().getPathInfo().forEach((key, value) -> {
+
+            if (value.endsWith(ProjectPath.DO_SUFFIX) || value.endsWith(ProjectPath.DTO_SUFFIX)) {
+                value = commonPath + value.substring(value.lastIndexOf("\\"));
+            } else {
+                value = currentModelPath + value.substring(value.indexOf("/src/main/java") + 14);
+            }
             File dir = new File(value);
-            
-            if (!dir.exists()) {
+            if (!dir.exists() && !value.endsWith(ProjectPath.MODEL_SUFFIX)) {
                 boolean result = dir.mkdirs();
                 if (result) {
                     logger.debug("创建目录： [" + value + "]");
@@ -264,6 +286,10 @@ public abstract class AbstractTemplateEngine {
         objectMap.put("superServiceImplClass", getSuperClassName(config.getSuperServiceImplClass()));
         objectMap.put("superControllerClassPackage", config.getSuperControllerClass());
         objectMap.put("superControllerClass", getSuperClassName(config.getSuperControllerClass()));
+        Map<String, String> params = new HashMap<>();
+        params.put("DO", COMMON_JAVA_PACKAGE + "dos");
+        params.put("DTO", COMMON_JAVA_PACKAGE + "dtos");
+        objectMap.put("commonPackage", params);
         return config.getInjectionConfig().prepareObjectMap(objectMap);
     }
 

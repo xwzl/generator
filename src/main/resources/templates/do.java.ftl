@@ -1,4 +1,4 @@
-package ${package.DO};
+package ${commonPackage.DO};
 
 
 import com.baomidou.mybatisplus.annotation.TableName;
