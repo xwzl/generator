@@ -2,6 +2,7 @@ package ${commonPackage.DO};
 
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.dftc.microservice.health.common.model.dos.BaseDO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -148,7 +148,7 @@ public abstract class AbstractTemplateEngine {
                     }
                 }
                 // MpDTO.java
-                if (null != tableInfo.getDtoName() && null != pathInfo.get(ConstVal.DTO_PATH)) {
+                if (null != tableInfo.getDtoName() && null != pathInfo.get(ConstVal.DTO_PATH) && DTO_FLAG != 0) {
                     String dtoFile = String.format((pathInfo.get(ConstVal.DTO_PATH) + File.separator + tableInfo.getDtoName() + suffixJavaOrKt()), entityName);
                     dtoFile = commonPath + "/dtos" + dtoFile.substring(dtoFile.lastIndexOf("\\"));
                     if (isCreate(FileType.DTO, dtoFile)) {
@@ -206,7 +206,11 @@ public abstract class AbstractTemplateEngine {
             }
             File dir = new File(value);
             if (!dir.exists() && !value.endsWith(ProjectPath.MODEL_SUFFIX)) {
-                boolean result = dir.mkdirs();
+                boolean result = false;
+                if (DTO_FLAG != 0) {
+                    result = dir.mkdirs();
+                }
+
                 if (result) {
                     logger.debug("创建目录： [" + value + "]");
                 }
@@ -287,8 +291,8 @@ public abstract class AbstractTemplateEngine {
         objectMap.put("superControllerClassPackage", config.getSuperControllerClass());
         objectMap.put("superControllerClass", getSuperClassName(config.getSuperControllerClass()));
         Map<String, String> params = new HashMap<>();
-        params.put("DO", COMMON_JAVA_PACKAGE + "dos");
-        params.put("DTO", COMMON_JAVA_PACKAGE + "dtos");
+        params.put("DO", COMMON_JAVA_PACKAGE + MICROSOFT_SERVICE_PACKAGE_NAME + ".dos");
+        params.put("DTO", COMMON_JAVA_PACKAGE + MICROSOFT_SERVICE_PACKAGE_NAME + ".dtos");
         objectMap.put("commonPackage", params);
         return config.getInjectionConfig().prepareObjectMap(objectMap);
     }

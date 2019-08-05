@@ -1,6 +1,6 @@
 package ${package.Mapper};
 
-import ${package.DO}.${table.doName};
+import ${commonPackage.DO}.${table.doName};
 import ${superMapperClassPackage};
 
 /**

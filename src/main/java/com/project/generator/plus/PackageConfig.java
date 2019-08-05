@@ -11,6 +11,8 @@ public class PackageConfig {
      */
     public static String MICROSOFT_SERVICE_NAME = "/customer";
 
+    public static String MICROSOFT_SERVICE_PACKAGE_NAME = "customer";
+
     /**
      * 指定项目的根路径
      */
@@ -25,22 +27,28 @@ public class PackageConfig {
     /**
      * 公共模块项目路径
      */
-    public static String COMMON_PROJECT_PATH = "/commom/common-model";
+    public static String COMMON_PROJECT_PATH = "/common/common-model";
 
     /**
      * 当前微服务的路径名称，src 放在哪个模块下
      */
-    public static String CURRENT_MODEL_PROJECT_PATH = "/view/view-cusomter-service";
+    public static String CURRENT_MODEL_PROJECT_PATH = "/view/view-customer-service";
 
     /**
      * 公共模块的路径的拼接
      */
-    public static String COMMON_JAVA_PATH = "/comdftc\\microservice\\health\\common\\model";
+    public static String COMMON_JAVA_PATH = "/com/dftc\\microservice\\health\\common\\model";
 
     /**
      * 公共模块 package 路径
      */
-    public static String COMMON_JAVA_PACKAGE = "comdftc.microservice.health.common.model.";
+    public static String COMMON_JAVA_PACKAGE = "com.dftc.microservice.health.common.model.";
+
+
+    /**
+     * dto 默认不生成
+     */
+    public static int DTO_FLAG = 0;
 
 
 }

@@ -114,12 +114,12 @@ public class GeneratorUntil {
         strategy.setRestControllerStyle(true);
         strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
 
-        strategy.setSuperEntityColumns("id","is_delete","update_time");
+        strategy.setSuperEntityColumns("id","is_delete","update_time","create_time");
 
         strategy.setControllerMappingHyphenStyle(true);
 
         //strategy.setTablePrefix(pc.getModuleName() + "_");
-        strategy.setTablePrefix("base" + "_");
+        strategy.setTablePrefix("base" + "_","t_dftc_tcjk_customer_");
         mpg.setStrategy(strategy);
     }
 

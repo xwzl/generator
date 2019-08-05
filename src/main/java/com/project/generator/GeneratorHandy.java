@@ -1,6 +1,8 @@
-package com.project.generator.demo;
+package com.project.generator;
 
 
+import com.project.generator.demo.GeneratorUntil;
+import com.project.generator.demo.MybatisHandy;
 import com.project.generator.plus.PackageConfig;
 
 /**
@@ -18,13 +20,13 @@ public class GeneratorHandy {
         //如果是子模块，必须设置
         //handy.setChildModule(true);
         //handy.setChildModuleName("spring-demo1/test/haha");
-        handy.setBasePackageName("com.spring.generator.hahah");
+        handy.setBasePackageName("com.dftc.microservice.health.view.cs");
         handy.setAuthor("xuweizhi");
-        handy.setUrl("47.105.218.58:3306/crm");
-        handy.setPassword("158262751");
+        handy.setUrl("192.192.192.61:6100/dftc");
+        handy.setPassword("123456");
         handy.setUsername("root");
-        PackageConfig.PROJECT_NAME = "D://haha";
-        PackageConfig.MICROSOFT_SERVICE_NAME = "/xixi";
+        PackageConfig.PROJECT_NAME = "D:/tcjk/root";
+        PackageConfig.MICROSOFT_SERVICE_NAME = "/customer";
 
         handy.setBaseColumnList(true);
         handy.setBaseResultMap(true);

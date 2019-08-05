@@ -2,8 +2,8 @@ package ${package.VO};
 
 import lombok.Data;
 import lombok.experimental.Accessors;
-import io.swagger.annotations.ApiModel
-import io.swagger.annotations.ApiModelProperty
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 
@@ -25,7 +25,7 @@ public class ${table.voName} implements Serializable {
     /**
     * ${field.comment}
     */
-    @ApiModelProperty(value = "${field.comment}")
+    @ApiModelProperty(value = "${field.comment}",required = false)
 </#if>
     private ${field.propertyType} ${field.propertyName};
 </#list>
