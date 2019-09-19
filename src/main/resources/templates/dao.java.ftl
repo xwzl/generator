@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @since ${date}
  */
 @Component
-public class ${table.daoName} extends ServiceImpl<${table.mapperName},${table.doName}> {
+public class ${table.daoName} {
 
 
 }
