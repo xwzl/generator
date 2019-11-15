@@ -39,7 +39,7 @@ public interface ConstVal {
     String VOS = "VO";
     String DTOS = "DTO";
     String DOS = "DO";
-    String DAO = "Dao";
+    String DAO = "DAO";
 
     String ENTITY_PATH = "entity_path";
     String SERVICE_PATH = "service_path";

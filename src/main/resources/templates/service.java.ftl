@@ -2,9 +2,7 @@ package ${package.Service};
 
 
 /**
- * <p>
- * ${table.comment!} 服务类
- * </p>
+ * ${table.comment!}
  *
  * @author ${author}
  * @since ${date}

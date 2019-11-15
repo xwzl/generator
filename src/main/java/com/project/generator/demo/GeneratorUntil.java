@@ -119,7 +119,7 @@ public class GeneratorUntil {
         strategy.setControllerMappingHyphenStyle(true);
 
         //strategy.setTablePrefix(pc.getModuleName() + "_");
-        strategy.setTablePrefix("base" + "_","t_dftc_tcjk_customer_");
+        strategy.setTablePrefix("base" + "_","t_dftc_tcjk_im_");
         mpg.setStrategy(strategy);
     }
 

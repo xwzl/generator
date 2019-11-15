@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * ${table.comment!} 服务实现类
+ * ${table.comment!}
  *
  * @author ${author}
  * @since ${date}

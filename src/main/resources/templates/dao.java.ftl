@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Component;
 
 /**
- * ${table.comment} DAO
+ * ${table.comment}
  *
  * @author ${author}
  * @since ${date}

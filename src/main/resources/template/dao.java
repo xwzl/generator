@@ -6,9 +6,7 @@ import ${package.Entity}.${entity};
 import ${superMapperClassPackage};
 
 /**
- * <p>
- * ${entity}Mapper 接口
- * </p>
+ * ${entity}Mapper
  *
  * @author ${author}
  * @since ${date}
