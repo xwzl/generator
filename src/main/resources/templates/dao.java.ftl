@@ -1,4 +1,4 @@
-package ${package.Dao};
+package ${package.DAO};
 
 import ${package.Mapper}.${table.mapperName};
 import ${commonPackage.DO}.${table.doName};

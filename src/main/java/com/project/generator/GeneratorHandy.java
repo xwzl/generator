@@ -28,8 +28,8 @@ public class GeneratorHandy {
         PackageConfig.PROJECT_NAME = "D:/root/root";
         PackageConfig.MICROSOFT_SERVICE_NAME = "/im";
         PackageConfig.MICROSOFT_SERVICE_PACKAGE_NAME = "im";
-        PackageConfig.CURRENT_MODEL_PROJECT_PATH="/service/service-im";
-
+        PackageConfig.CURRENT_MODEL_PROJECT_PATH = "/service/service-im";
+        PackageConfig.DTO_FLAG = 1;
         handy.setBaseColumnList(true);
         handy.setBaseResultMap(true);
 

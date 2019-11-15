@@ -142,7 +142,7 @@ public abstract class AbstractTemplateEngine {
                 // MpVO.java
                 if (null != tableInfo.getVoName() && null != pathInfo.get(ConstVal.VO_PATH)) {
                     String voFile = String.format((pathInfo.get(ConstVal.VO_PATH) + File.separator + tableInfo.getVoName() + suffixJavaOrKt()), entityName);
-                    voFile = currentModelPath + voFile.substring(voFile.indexOf("/src/main/java") + 14);
+                    voFile = commonPath +"/vos"+ voFile.substring(voFile.lastIndexOf("\\"));
                     if (isCreate(FileType.VO, voFile)) {
                         writer(objectMap, templateFilePath(template.getVos()), voFile);
                     }
@@ -199,7 +199,7 @@ public abstract class AbstractTemplateEngine {
 
         getConfigBuilder().getPathInfo().forEach((key, value) -> {
 
-            if (value.endsWith(ProjectPath.DO_SUFFIX) || value.endsWith(ProjectPath.DTO_SUFFIX)) {
+            if (value.endsWith(ProjectPath.DO_SUFFIX) || value.endsWith(ProjectPath.DTO_SUFFIX) || value.endsWith(ProjectPath.VO_SUFFIX)) {
                 value = commonPath + value.substring(value.lastIndexOf("\\"));
             } else {
                 value = currentModelPath + value.substring(value.indexOf("/src/main/java") + 14);

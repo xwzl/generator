@@ -1,7 +1,7 @@
 package ${package.ServiceImpl};
 
 import ${package.Service}.${table.serviceName};
-import ${package.Dao}.${table.daoName};
+import ${package.DAO}.${table.daoName};
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
